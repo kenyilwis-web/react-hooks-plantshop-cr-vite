@@ -10,7 +10,7 @@ const Search = ({ searchTerm, onSearchChange }) => {
         type="text"
         value={searchTerm}
         onChange={(event) => onSearchChange(event.target.value)}
-        placeholder="e.g. monstera"
+        placeholder="Type a name to search..."
       />
     </div>
   )

@@ -1,15 +1,13 @@
-# Plant Shop (React)
+# Plant Shop (React + Vite)
 
-A frontend React application for managing a small plant inventory.
+A React frontend connected to a plant backend API.
 
-## Description
+## Features
 
-This app connects to a backend API and supports the core inventory flow:
-
-- Load and display all plants on page load.
-- Add a new plant using a form.
-- Mark a plant as sold out.
-- Filter plants by name using search.
+- Fetch and display all plants on initial page load.
+- Add a new plant via form submission.
+- Mark a plant as sold out in the UI (non-persisting toggle).
+- Search plants by name with live filtering.
 
 ## Screenshot
 
@@ -19,71 +17,66 @@ This app connects to a backend API and supports the core inventory flow:
 
 - React 18
 - Vite
-- CSS Modules
 - Fetch API
+- Jest + React Testing Library
 
-## Installation
+## Getting Started
 
-```bash
-npm install
-```
+1. Install dependencies:
 
-## Usage
+   ```bash
+   npm install
+   ```
 
-1. Start the frontend:
+2. Start the backend (JSON Server against `db.json`):
+
+   ```bash
+   npx json-server --watch db.json --port 6001
+   ```
+
+3. In a new terminal, start the frontend:
 
    ```bash
    npm run dev
    ```
 
-2. Start your backend API so `GET/POST/PATCH` requests are available at:
+4. Open the Vite URL shown in terminal.
 
-   ```
-   http://localhost:6001/plants
-   ```
+## API Contract
 
-3. Open the app in your browser using the Vite URL shown in terminal.
+The UI expects:
 
-## API Expectations
+- `GET http://localhost:6001/plants`
+- `POST http://localhost:6001/plants`
 
-The frontend expects a REST resource at `/plants`:
+## Project Structure
 
-- `GET /plants` → returns all plants
-- `POST /plants` → creates a plant
-- `PATCH /plants/:id` → updates plant fields (for sold-out status)
-
-Example plant shape:
-
-```json
-{
-  "id": 1,
-  "name": "Monstera",
-  "image": "https://example.com/monstera.png",
-  "price": 25,
-  "soldOut": false
-}
-```
+- `src/components/PlantPage.jsx` — data fetching, create flow, search filtering
+- `src/components/NewPlantForm.jsx` — controlled form + submit handling
+- `src/components/PlantList.jsx` — maps filtered plants to cards
+- `src/components/PlantCard.jsx` — card UI + sold-out toggle button
+- `src/components/Search.jsx` — controlled search input
 
 ## Testing
-
-Run tests with:
 
 ```bash
 npm test
 ```
 
-## Project Structure
+## Branch Cleanup (GitHub)
 
-- `src/App.jsx`: API requests, app state, filtering, and form handling
-- `src/components/Search.jsx`: controlled search input
-- `src/components/ProductList.jsx`: filtered list rendering
-- `src/components/ProductCard.jsx`: single-plant UI and sold-out action
+Delete merged remote branches:
 
-## Contributing
+```bash
+git fetch --prune
+git branch -r --merged origin/main | grep -v "origin/main" | sed 's/origin\///' | xargs -r -n 1 git push origin --delete
+```
 
-1. Create a feature branch.
-2. Make your changes and commit with clear messages.
-3. Open a pull request for review.
+Delete fully merged local branches:
+
+```bash
+git branch --merged | grep -v "^*" | grep -v " main$" | xargs -r git branch -d
+```
 
 ## License
 

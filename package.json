@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "test": "jest",
-    "build": "vite build"
+    "build": "vite build",
+    "server": "json-server --watch db.json --port 6001"
   },
   "dependencies": {
     "@emotion/react": "^11.0.0",
@@ -24,6 +25,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^30.0.2",
+    "json-server": "^0.17.4",
     "vite": "^4.0.0"
   }
 }
