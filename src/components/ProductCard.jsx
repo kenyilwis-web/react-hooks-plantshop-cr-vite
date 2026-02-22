@@ -23,7 +23,6 @@ const ProductCard = ({ product, onMarkSoldOut }) => {
       <p>Price: ${Number(product.price).toFixed(2)}</p>
       <p>Status: {product.soldOut ? 'Sold Out' : 'Available'}</p>
 
-      {/* Button text and disabled state reflect sold-out and request progress. */}
       <button
         data-testid={'product-' + product.id}
         onClick={handleMarkSoldOutClick}

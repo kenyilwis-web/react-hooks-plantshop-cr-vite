@@ -1,6 +1,8 @@
 # Plant Shop (React + Vite)
 
-A React frontend connected to a plant backend API.
+## Description
+
+Plant Shop is a React frontend connected to a REST backend for managing a simple plant inventory.
 
 ## Features
 
@@ -28,10 +30,10 @@ A React frontend connected to a plant backend API.
    npm install
    ```
 
-2. Start the backend (JSON Server against `db.json`):
+2. Start the backend:
 
    ```bash
-   npx json-server --watch db.json --port 6001
+   npm run server
    ```
 
 3. In a new terminal, start the frontend:
@@ -62,6 +64,16 @@ The UI expects:
 ```bash
 npm test
 ```
+
+## Contributing
+
+1. Create a branch from `main`.
+2. Make focused changes with clear commit messages.
+3. Push your branch and open a pull request.
+
+## Project Status
+
+Active learning project for React hooks + backend integration.
 
 ## Branch Cleanup (GitHub)
 
