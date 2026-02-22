@@ -1,93 +1,90 @@
-# Phase 2 Code Challenge: Plantsy
+# Plant Shop (React)
 
-## Demo
+A frontend React application for managing a small plant inventory.
 
-Use this gif as an example of how the app should work.
+## Description
 
-![Demo GIF](./demo.gif)
+This app connects to a backend API and supports the core inventory flow:
 
-## Instructions
+- Load and display all plants on page load.
+- Add a new plant using a form.
+- Mark a plant as sold out.
+- Filter plants by name using search.
 
-Welcome to Plantsy! You've been tasked with building out some features for the
-admin side of a plant store. The designers have put together the components and
-CSS. Now it's up to you to bring the features to life by adding stateful logic
-as well as persisting data to the backend via our API.
+## Screenshot
 
-Your job will be to make our app work according to the user stories you will
-find the [Deliverables](#Deliverables) section.
+![Completed Plant Shop UI](docs/images/completed-app.svg)
 
-## Setup
+## Tech Stack
 
-1. Run `npm install` in your terminal.
-2. Run `npm run server`. This will run your backend on port `6001`.
-3. In a new terminal, run `npm run dev`.
+- React 18
+- Vite
+- CSS Modules
+- Fetch API
 
-Make sure to open [http://localhost:6001/plants](http://localhost:6001/plants)
-in the browser to verify that your backend is working before you proceed!
+## Installation
 
-## Endpoints
-
-The base URL for your backend is: `http://localhost:6001`
-
-## Deliverables
-
-As a user:
-
-1. When the app starts, I can see all plants.
-2. I can add a new plant to the page by submitting the form.
-3. I can mark a plant as "sold out".
-4. I can search for plants by their name and see a filtered list of plants.
-
-### Endpoints for Core Deliverables
-
-#### GET /plants
-
-Example Response:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Aloe",
-    "image": "./images/aloe.jpg",
-    "price": 15.99
-  },
-  {
-    "id": 2,
-    "name": "ZZ Plant",
-    "image": "./images/zz-plant.jpg",
-    "price": 25.98
-  }
-]
+```bash
+npm install
 ```
 
-#### POST `/plants`
+## Usage
 
-Required Headers:
+1. Start the frontend:
 
-```js
-{
-  "Content-Type": "application/json"
-}
-```
+   ```bash
+   npm run dev
+   ```
 
-Request Object:
+2. Start your backend API so `GET/POST/PATCH` requests are available at:
 
-```json
-{
-  "name": "string",
-  "image": "string",
-  "price": number
-}
-```
+   ```
+   http://localhost:6001/plants
+   ```
 
-Example Response:
+3. Open the app in your browser using the Vite URL shown in terminal.
+
+## API Expectations
+
+The frontend expects a REST resource at `/plants`:
+
+- `GET /plants` → returns all plants
+- `POST /plants` → creates a plant
+- `PATCH /plants/:id` → updates plant fields (for sold-out status)
+
+Example plant shape:
 
 ```json
 {
   "id": 1,
-  "name": "Aloe",
-  "image": "./images/aloe.jpg",
-  "price": 15.99
+  "name": "Monstera",
+  "image": "https://example.com/monstera.png",
+  "price": 25,
+  "soldOut": false
 }
 ```
+
+## Testing
+
+Run tests with:
+
+```bash
+npm test
+```
+
+## Project Structure
+
+- `src/App.jsx`: API requests, app state, filtering, and form handling
+- `src/components/Search.jsx`: controlled search input
+- `src/components/ProductList.jsx`: filtered list rendering
+- `src/components/ProductCard.jsx`: single-plant UI and sold-out action
+
+## Contributing
+
+1. Create a feature branch.
+2. Make your changes and commit with clear messages.
+3. Open a pull request for review.
+
+## License
+
+See [LICENSE.md](LICENSE.md).

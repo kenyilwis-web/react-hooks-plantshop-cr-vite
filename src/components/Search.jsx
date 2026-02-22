@@ -1,17 +1,19 @@
-import React from "react";
+import React from 'react'
 
-function Search() {
+// Controlled input for plant-name filtering.
+const Search = ({ searchTerm, onSearchChange }) => {
   return (
-    <div className="searchbar">
-      <label htmlFor="search">Search Plants:</label>
+    <div>
+      <label htmlFor="plant-search">Search plants by name: </label>
       <input
+        id="plant-search"
         type="text"
-        id="search"
-        placeholder="Type a name to search..."
-        onChange={(e) => console.log("Searching...")}
+        value={searchTerm}
+        onChange={(event) => onSearchChange(event.target.value)}
+        placeholder="e.g. monstera"
       />
     </div>
-  );
+  )
 }
 
-export default Search;
+export default Search

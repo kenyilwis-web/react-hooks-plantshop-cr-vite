@@ -1,0 +1,10 @@
+.card {
+	border: 1px solid #d4d4d4;
+	border-radius: 8px;
+	padding: 1rem;
+	margin-bottom: 1rem;
+}
+
+.outOfStock {
+	opacity: 0.6;
+}

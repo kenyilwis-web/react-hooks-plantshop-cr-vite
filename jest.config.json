@@ -1,0 +1,7 @@
+{
+    "testEnvironment": "jest-environment-jsdom",
+    "testPathIgnorePatterns": ["<rootDir>/node_modules/"],
+    "moduleNameMapper": {
+        "\\.(css|less)$": "identity-obj-proxy"
+    }
+}
